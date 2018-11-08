@@ -1,0 +1,33 @@
+@import "../../node_modules/bulma/bulma.sass";
+
+#text{
+    border:1px solid grey;
+}
+
+.cel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.column{
+    height:100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+table{
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+}
+
+td {
+    height: 100px;
+    width: 100px;
+    border: 1px dotted white;
+    text-align: center;
+}
