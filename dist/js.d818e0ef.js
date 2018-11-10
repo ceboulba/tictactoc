@@ -105,45 +105,63 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"src/js/index.js":[function(require,module,exports) {
-console.log('HelloWorld !');
 var tds = document.querySelectorAll("td");
 var turn = 1;
-var pOne = "<p class=\"title is-1 cel\">\uD83D\uDE0D</p>";
-var pTwo = "<p class=\"title is-1 cel\">\uD83D\uDE01</p>";
-var board = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']];
-console.log('board 1, O', board[2][2]);
+var pOne = "\uD83D\uDE0D";
+var pTwo = "\uD83D\uDE01";
+var win = false;
 
 function game(e) {
-  console.log('turn => ', turn);
-  console.log('e innerHTML => ', e.target.innerHTML);
-  e.target.innerHTML === '' ? turn % 2 === 0 ? function () {
-    console.log('oui');
-    e.target.innerHTML = pOne;
-    turn++;
-  }() : function () {
-    console.log('non');
-    e.target.innerHTML = pTwo;
-    turn++;
-    rules();
-  }() : alert("c'est occupe");
+  var elem = e.target.id;
+  var val = e.target.innerHTML; //HORIZONTAL//
+
+  tds[0].innerHTML === tds[1].innerHTML && tds[0].innerHTML === tds[2].innerHTML && tds[0].innerHTML !== "" ? setTimeout(function () {
+    alert("".concat(tds[0].innerHTML, " WIN !"));
+    reload();
+  }, 100) : tds[3].innerHTML === tds[4].innerHTML && tds[3].innerHTML === tds[5].innerHTML && tds[3].innerHTML !== "" ? setTimeout(function () {
+    alert("".concat(tds[3].innerHTML, " WIN !"));
+    reload();
+  }, 100) : tds[6].innerHTML === tds[7].innerHTML && tds[6].innerHTML === tds[8].innerHTML && tds[6].innerHTML !== "" ? setTimeout(function () {
+    alert("".concat(tds[6].innerHTML, " WIN !"));
+    reload();
+  }, 100) : //VERTICAL//
+  tds[0].innerHTML === tds[3].innerHTML && tds[0].innerHTML === tds[6].innerHTML && tds[0].innerHTML !== "" ? setTimeout(function () {
+    alert("".concat(tds[0].innerHTML, " WIN !"));
+    reload();
+  }, 100) : tds[1].innerHTML === tds[4].innerHTML && tds[1].innerHTML === tds[7].innerHTML && tds[7].innerHTML !== "" ? setTimeout(function () {
+    alert("".concat(tds[1].innerHTML, " WIN !"));
+    reload();
+  }, 100) : tds[2].innerHTML === tds[5].innerHTML && tds[2].innerHTML === tds[8].innerHTML && tds[2].innerHTML !== "" ? setTimeout(function () {
+    alert("".concat(tds[2].innerHTML, " WIN !"));
+    reload();
+  }, 100) : //DIAGONAL
+  // tds[0].innerHTML === tds[4].innerHTML && tds[0].innerHTML === tds[8].innerHTML && tds[0].innerHTM !== "" ?
+  //     setTimeout(() => {
+  //         alert(`${tds[0].innerHTML} WIN !`)
+  //         reload()
+  //     }, 150) :
+  console.log('tryAgain');
+  return;
 }
 
-function rules() {
-  console.log('on est dans dans rules !');
-  var lineOne = document.querySelectorAll(".lineOne");
-  var lineTwo = document.querySelectorAll(".lineTwo");
-  var lineThree = document.querySelectorAll(".lineThree");
-  lineOne.forEach(function (item) {
-    return console.log(item.innerHTML);
-  }); //console.log(`lines => ${lines}`)
-}
+function reload() {
+  tds.forEach(function (td) {
+    return td.innerHTML = '';
+  });
+} // Remplir les cases les cases et lance game()
 
-rules(); // ajoute 'is-selected' a la case et lance game()
 
 tds.forEach(function (elem) {
   return elem.addEventListener('click', function (e) {
-    console.log('e => ', e);
+    // console.log('e => ', e)
     e.target.classList.add("is-selected");
+    turn % 2 === 0 && e.target.innerHTML.length === 0 ? function () {
+      e.target.innerHTML = pOne;
+      turn++;
+    }() : turn % 2 !== 0 && e.target.innerHTML.length === 0 ? function () {
+      e.target.innerHTML = pTwo;
+      turn++;
+    }() : alert("Impossible");
     game(e);
   });
 });
@@ -174,7 +192,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58976" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58773" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
