@@ -10,49 +10,55 @@ function game(e) {
     const val = e.target.innerHTML
 
     //HORIZONTAL//
-    tds[0].innerHTML === tds[1].innerHTML && tds[0].innerHTML === tds[2].innerHTML && tds[0].innerHTML !== "" ?
+    tds[0].innerHTML === tds[1].innerHTML && tds[0].innerHTML === tds[2].innerHTML && tds[0].innerHTML !== "" && tds[1] !=="" && tds[2] !== "" ?
         setTimeout(() => {
             alert(`${tds[0].innerHTML} WIN !`)
             reload()
         }, 100) :
 
-    tds[3].innerHTML === tds[4].innerHTML && tds[3].innerHTML === tds[5].innerHTML && tds[3].innerHTML !== "" ?
+    tds[3].innerHTML === tds[4].innerHTML && tds[3].innerHTML === tds[5].innerHTML && tds[3].innerHTML !== "" && tds[4].innerHTML !== "" && tds[5].innerHTML !== "" ?
             setTimeout(() => {
                 alert(`${tds[3].innerHTML} WIN !`)
                 reload()
             }, 100) :
 
-            tds[6].innerHTML === tds[7].innerHTML && tds[6].innerHTML === tds[8].innerHTML && tds[6].innerHTML !== "" ?
+            tds[6].innerHTML === tds[7].innerHTML && tds[6].innerHTML === tds[8].innerHTML && tds[6].innerHTML !== "" && tds[7].innerHTML !== "" && tds[8].innerHTML !== "" ?
                 setTimeout(() => {
                     alert(`${tds[6].innerHTML} WIN !`)
                     reload()
                 }, 100) :
 
                 //VERTICAL//
-                tds[0].innerHTML === tds[3].innerHTML && tds[0].innerHTML === tds[6].innerHTML && tds[0].innerHTML !== "" ?
+                tds[0].innerHTML === tds[3].innerHTML && tds[0].innerHTML === tds[6].innerHTML && tds[0].innerHTML !== "" && tds[3].innerHTML !== "" && tds[6].innerHTML !== "" ?
                     setTimeout(() => {
                         alert(`${tds[0].innerHTML} WIN !`)
                         reload()
                     }, 100) :
 
-                    tds[1].innerHTML === tds[4].innerHTML && tds[1].innerHTML === tds[7].innerHTML && tds[7].innerHTML !== "" ?
+                    tds[1].innerHTML === tds[4].innerHTML && tds[1].innerHTML === tds[7].innerHTML && tds[1].innerHTML !== "" && tds[4].innerHTML !== "" && tds[7].innerHTML !== "" ?
                         setTimeout(() => {
                             alert(`${tds[1].innerHTML} WIN !`)
                             reload()
                         }, 100) :
 
-                        tds[2].innerHTML === tds[5].innerHTML && tds[2].innerHTML === tds[8].innerHTML && tds[2].innerHTML !== "" ?
+                        tds[2].innerHTML === tds[5].innerHTML && tds[2].innerHTML === tds[8].innerHTML && tds[2].innerHTML !== "" && tds[5].innerHTML !== "" && tds[8].innerHTML !== "" ?
                             setTimeout(() => {
                                 alert(`${tds[2].innerHTML} WIN !`)
                                 reload()
                             }, 100) :
 
                             //DIAGONAL
-                            // tds[0].innerHTML === tds[4].innerHTML && tds[0].innerHTML === tds[8].innerHTML && tds[0].innerHTM !== "" ?
-                            //     setTimeout(() => {
-                            //         alert(`${tds[0].innerHTML} WIN !`)
-                            //         reload()
-                            //     }, 150) :
+                            tds[0].innerHTML === tds[4].innerHTML && tds[0].innerHTML === tds[8].innerHTML && tds[0].innerHTM !== "" && tds[4].innerHTML !== "" && tds[8].innerHTML !== "" ?
+                                setTimeout(() => {
+                                    alert(`${tds[0].innerHTML} WIN !`)
+                                    reload()
+                                }, 150) :
+
+                            tds[2].innerHTML === tds[4].innerHTML && tds[2].innerHTML === tds[6].innerHTML && tds[2].innerHTM !== "" && tds[4].innerHTML !== "" && tds[6].innerHTML !== "" ?
+                                setTimeout(() => {
+                                    alert(`${tds[0].innerHTML} WIN !`)
+                                    reload()
+                                }, 150) :
 
                                 console.log('tryAgain')
 
@@ -63,6 +69,11 @@ function game(e) {
 function reload() {
     tds.forEach(td => td.innerHTML = '')
 }
+
+//boutton RESET
+(function reset() {
+    document.getElementById('reset').addEventListener('click', reload)
+})()
 
 // Remplir les cases les cases et lance game()
 tds.forEach(elem => elem.addEventListener('click', (e) => {

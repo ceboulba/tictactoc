@@ -115,32 +115,33 @@ function game(e) {
   var elem = e.target.id;
   var val = e.target.innerHTML; //HORIZONTAL//
 
-  tds[0].innerHTML === tds[1].innerHTML && tds[0].innerHTML === tds[2].innerHTML && tds[0].innerHTML !== "" ? setTimeout(function () {
+  tds[0].innerHTML === tds[1].innerHTML && tds[0].innerHTML === tds[2].innerHTML && tds[0].innerHTML !== "" && tds[1] !== "" && tds[2] !== "" ? setTimeout(function () {
     alert("".concat(tds[0].innerHTML, " WIN !"));
     reload();
-  }, 100) : tds[3].innerHTML === tds[4].innerHTML && tds[3].innerHTML === tds[5].innerHTML && tds[3].innerHTML !== "" ? setTimeout(function () {
+  }, 100) : tds[3].innerHTML === tds[4].innerHTML && tds[3].innerHTML === tds[5].innerHTML && tds[3].innerHTML !== "" && tds[4].innerHTML !== "" && tds[5].innerHTML !== "" ? setTimeout(function () {
     alert("".concat(tds[3].innerHTML, " WIN !"));
     reload();
-  }, 100) : tds[6].innerHTML === tds[7].innerHTML && tds[6].innerHTML === tds[8].innerHTML && tds[6].innerHTML !== "" ? setTimeout(function () {
+  }, 100) : tds[6].innerHTML === tds[7].innerHTML && tds[6].innerHTML === tds[8].innerHTML && tds[6].innerHTML !== "" && tds[7].innerHTML !== "" && tds[8].innerHTML !== "" ? setTimeout(function () {
     alert("".concat(tds[6].innerHTML, " WIN !"));
     reload();
   }, 100) : //VERTICAL//
-  tds[0].innerHTML === tds[3].innerHTML && tds[0].innerHTML === tds[6].innerHTML && tds[0].innerHTML !== "" ? setTimeout(function () {
+  tds[0].innerHTML === tds[3].innerHTML && tds[0].innerHTML === tds[6].innerHTML && tds[0].innerHTML !== "" && tds[3].innerHTML !== "" && tds[6].innerHTML !== "" ? setTimeout(function () {
     alert("".concat(tds[0].innerHTML, " WIN !"));
     reload();
-  }, 100) : tds[1].innerHTML === tds[4].innerHTML && tds[1].innerHTML === tds[7].innerHTML && tds[7].innerHTML !== "" ? setTimeout(function () {
+  }, 100) : tds[1].innerHTML === tds[4].innerHTML && tds[1].innerHTML === tds[7].innerHTML && tds[1].innerHTML !== "" && tds[4].innerHTML !== "" && tds[7].innerHTML !== "" ? setTimeout(function () {
     alert("".concat(tds[1].innerHTML, " WIN !"));
     reload();
-  }, 100) : tds[2].innerHTML === tds[5].innerHTML && tds[2].innerHTML === tds[8].innerHTML && tds[2].innerHTML !== "" ? setTimeout(function () {
+  }, 100) : tds[2].innerHTML === tds[5].innerHTML && tds[2].innerHTML === tds[8].innerHTML && tds[2].innerHTML !== "" && tds[5].innerHTML !== "" && tds[8].innerHTML !== "" ? setTimeout(function () {
     alert("".concat(tds[2].innerHTML, " WIN !"));
     reload();
   }, 100) : //DIAGONAL
-  // tds[0].innerHTML === tds[4].innerHTML && tds[0].innerHTML === tds[8].innerHTML && tds[0].innerHTM !== "" ?
-  //     setTimeout(() => {
-  //         alert(`${tds[0].innerHTML} WIN !`)
-  //         reload()
-  //     }, 150) :
-  console.log('tryAgain');
+  tds[0].innerHTML === tds[4].innerHTML && tds[0].innerHTML === tds[8].innerHTML && tds[0].innerHTM !== "" && tds[4].innerHTML !== "" && tds[8].innerHTML !== "" ? setTimeout(function () {
+    alert("".concat(tds[0].innerHTML, " WIN !"));
+    reload();
+  }, 150) : tds[2].innerHTML === tds[4].innerHTML && tds[2].innerHTML === tds[6].innerHTML && tds[2].innerHTM !== "" && tds[4].innerHTML !== "" && tds[6].innerHTML !== "" ? setTimeout(function () {
+    alert("".concat(tds[0].innerHTML, " WIN !"));
+    reload();
+  }, 150) : console.log('tryAgain');
   return;
 }
 
@@ -148,7 +149,12 @@ function reload() {
   tds.forEach(function (td) {
     return td.innerHTML = '';
   });
-} // Remplir les cases les cases et lance game()
+} //boutton RESET
+
+
+(function reset() {
+  document.getElementById('reset').addEventListener('click', reload);
+})(); // Remplir les cases les cases et lance game()
 
 
 tds.forEach(function (elem) {
@@ -192,7 +198,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58773" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50257" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

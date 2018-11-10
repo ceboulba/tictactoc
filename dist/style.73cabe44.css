@@ -8953,7 +8953,6 @@ label.panel-block:hover {
 }
 
 .column {
-  height: 100vh;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -8962,6 +8961,7 @@ label.panel-block:hover {
 table {
   display: flex;
   justify-content: center;
+  margin: 3rem 0;
 }
 
 td {
